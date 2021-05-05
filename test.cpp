@@ -16,69 +16,75 @@ string get_status_str(bool status)
 
 int main()
 {
-    SequentialListTest seq_test;
-    DoublyLinkedListTest linked_test;
+    int grade = 10;
+    CircularQueueTest queue_test;
+    DynamicStackTest stack_test;
 
-    string seq_test_descriptions[10] = {
-            "Test1: New empty list is valid",
-            "Test2: insert_front() and insert_back() on zero-element list",
-            "Test3: select() and search() work properly",
-            "Test4: remove_front() and remove_back() on one-element list",
-            "Test5: Inserting too many elements should fail",
-            "Test6: insert_front() keeps moving elements forward",
-            "Test7: inserting at different positions in the list",
-            "Test8: try to remove too many elements, then add a few elements",
-            "Test9: lots of inserts and deletes, all of them valid",
-            "Test10: lots of inserts and deletes, some of them invalid"
+    string queue_test_descriptions[10] = {
+            "Test1: new empty queue is valid",
+            "Test2: enqueue() an element on zero-element queues",
+            "Test3: peek(), enqueue(), and dequeue() work properly",
+            "Test4: peek() and dequeue() on one-element queue",
+            "Test5: enqueue() too many elements should fail",
+            "Test6: enqueue() keeps changing tail",
+            "Test7: dequeue() keeps changing head",
+            "Test8: try to dequeue() too many elements, then enqueue() a few elements",
+            "Test9: lots of enqueue() and dequeue(), all of them valid",
+            "Test10: lots of enqueue() and dequeue(), some of them invalid"
     };
 
-    bool seq_test_results[10];
-    seq_test_results[0] = seq_test.test1();
-    seq_test_results[1] = seq_test.test2();
-    seq_test_results[2] = seq_test.test3();
-    seq_test_results[3] = seq_test.test4();
-    seq_test_results[4] = seq_test.test5();
-    seq_test_results[5] = seq_test.test6();
-    seq_test_results[6] = seq_test.test7();
-    seq_test_results[7] = seq_test.test8();
-    seq_test_results[8] = seq_test.test9();
-    seq_test_results[9] = seq_test.test10();
+    bool queue_test_results[10] = {false,false,false,false,false,false,false,false,false,false};
+    queue_test_results[0] = queue_test.test1();
+    queue_test_results[1] = queue_test.test2();
+    queue_test_results[2] = queue_test.test3();
+    queue_test_results[3] = queue_test.test4();
+    queue_test_results[4] = queue_test.test5();
+    queue_test_results[5] = queue_test.test6();
+    queue_test_results[6] = queue_test.test7();
+    queue_test_results[7] = queue_test.test8();
+    queue_test_results[8] = queue_test.test9();
+    queue_test_results[9] = queue_test.test10();
 
-    cout << "SEQUENTIAL LIST TESTING RESULTS \n";
+    cout << "CIRCULAR QUEUE TESTING RESULTS \n";
     cout << "******************************* \n";
     for (int i = 0; i < 10; ++i) {
-        cout << seq_test_descriptions[i] << endl << get_status_str(seq_test_results[i]) << endl;
+        cout << queue_test_descriptions[i] << endl << get_status_str(queue_test_results[i]) << endl;
+        if (queue_test_results[i]) grade += 4;
     }
+    cout << endl << "Total grade: " << grade << endl << endl;
 
-    string linked_test_descriptions[10] = {
-            "Test1: New empty list is valid",
-            "Test2: insert_front() and insert_back() on zero-element list",
-            "Test3: select() and search() work properly",
-            "Test4: remove_front() and remove_back() on one-element list",
-            "Test5: replace() works properly",
-            "Test6: insert_front() keeps moving elements forward",
-            "Test7: inserting at different positions in the list",
-            "Test8: try to remove too many elements, then add a few elements",
-            "Test9: lots of inserts and deletes, all of them valid",
-            "Test10: lots of inserts and deletes, some of them invalid"
+    grade += 10;
+
+    string stack_test_descriptions[10] = {
+            "Test1: new empty stack is valid",
+            "Test2: push() an element on zero-element stacks",
+            "Test3: peek(), push(), and pop() work properly",
+            "Test4: peek() and pop() on one-element stack",
+            "Test5: push() too many elements should increase capacity",
+            "Test6: push() keeps changing size and capacity",
+            "Test7: pop() keeps changing size and capacity",
+            "Test8: try to pop() too many elements, then push() a few elements",
+            "Test9: lots of push() and pop(), all of them valid",
+            "Test10: lots of push() and pop(), some of them invalid"
     };
 
-    bool linked_test_results[10];
-    linked_test_results[0] = linked_test.test1();
-    linked_test_results[1] = linked_test.test2();
-    linked_test_results[2] = linked_test.test3();
-    linked_test_results[3] = linked_test.test4();
-    linked_test_results[4] = linked_test.test5();
-    linked_test_results[5] = linked_test.test6();
-    linked_test_results[6] = linked_test.test7();
-    linked_test_results[7] = linked_test.test8();
-    linked_test_results[8] = linked_test.test9();
-    linked_test_results[9] = linked_test.test10();
+    bool stack_test_results[10] = {false,false,false,false,false,false,false,false,false,false};
+    stack_test_results[0] = stack_test.test1();
+    stack_test_results[1] = stack_test.test2();
+    stack_test_results[2] = stack_test.test3();
+    stack_test_results[3] = stack_test.test4();
+    stack_test_results[4] = stack_test.test5();
+    stack_test_results[5] = stack_test.test6();
+    stack_test_results[6] = stack_test.test7();
+    stack_test_results[7] = stack_test.test8();
+    stack_test_results[8] = stack_test.test9();
+    stack_test_results[9] = stack_test.test10();
 
-    cout << "DOUBLY LINKED LIST TESTING RESULTS \n";
+    cout << "DYNAMIC STACK TESTING RESULTS \n";
     cout << "********************************** \n";
     for (int i = 0; i < 10; ++i) {
-        cout << linked_test_descriptions[i] << endl << get_status_str(linked_test_results[i]) << endl;
+        cout << stack_test_descriptions[i] << endl << get_status_str(stack_test_results[i]) << endl;
+        if (stack_test_results[i]) grade += 4;
     }
-    cout << endl;
+    cout << endl << "Total grade: " << grade << endl << endl;
 }
